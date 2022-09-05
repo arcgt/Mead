@@ -18,9 +18,9 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--config', type=str, default='config_demo.yaml', help='Path to the config file.')
 parser.add_argument('--output_path', type=str, default='./demo', help="outputs path")
 parser.add_argument("--resume", action="store_true")
-parser.add_argument('--checkpoint_ref', type=str, default='./Gan_00171900.pt', help='Path to the refinement checkpoint file')
-parser.add_argument('--checkpoint_n2e', type=str, default='./Gan_00203500.pt', help='Path to the neutral2emotion checkpoint file')
-parser.add_argument('--checkpoint_lstm', type=str, default='./audio2exp_00200000.pt', help='Path to the audio2landmark checkpoint file')
+parser.add_argument('--checkpoint_ref', type=str, default='../models/Gan_00171900.pt', help='Path to the refinement checkpoint file')
+parser.add_argument('--checkpoint_n2e', type=str, default='../models/Gan_00203500.pt', help='Path to the neutral2emotion checkpoint file')
+parser.add_argument('--checkpoint_lstm', type=str, default='../models/audio2exp_00200000.pt', help='Path to the audio2landmark checkpoint file')
 opts = parser.parse_args()
 
 cudnn.benchmark = True
@@ -74,4 +74,3 @@ with torch.no_grad():
         id += 1
         if id >= len(test_loader):
             sys.exit('Finish testing')
-

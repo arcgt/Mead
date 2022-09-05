@@ -57,13 +57,12 @@ class GanimationTrainer(nn.Module):
         em_image = self.gan(video_ref, onehot)
         pca_ldmk = self.audio2exp(audio).cpu()
         fake_ldmk = self.pca.inverse_transform(pca_ldmk)[0]
-        heatmap = self.transform(draw_heatmap_from_78_landmark(fake_ldmk, 384, 384))
+        heatmap_tmp = draw_heatmap_from_78_landmark(fake_ldmk, 384, 384)
+        # heatmap_tmp = transforms.ToTensor()(heatmap_tmp)
+        # heatmap = transforms.Normalize([0.5], [0.5])(heatmap_tmp)
+        heatmap = self.transform(heatmap_tmp)
         video_heatmap = torch.Tensor(heatmap).unsqueeze(0).cuda()
         cat_image = torch.cat((em_image, video_heatmap), dim=1)
         talk_face = self.encdec(cat_image)
 
         return talk_face
-
-
-
-

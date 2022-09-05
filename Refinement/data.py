@@ -287,7 +287,7 @@ class DemoTestDataset(data.Dataset):
                  landmarklist_reader = default_comparameter_reader, picklelist_reader = default_picklelist_reader, preprocess_tool = preprocess_tool):
         self.root = root
         self.video_root = os.path.join(self.root, 'Reference')
-        self.audio_root = './MFCC_test'
+        self.audio_root = '../MFCC_test'
 
         self.audio_list = flist['audio_list_test']
 

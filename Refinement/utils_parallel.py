@@ -92,7 +92,7 @@ def pad_mfcc(mfcc, append=False, target_shape=(100,28)):
 
 def get_config(config):
     with open(config, 'r') as stream:
-        return yaml.load(stream)
+        return yaml.full_load(stream)
 
 
 def prepare_sub_folder(output_directory):
